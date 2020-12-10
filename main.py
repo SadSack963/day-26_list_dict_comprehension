@@ -105,7 +105,9 @@ weather_c = {
 weather_f = {day: (C * 9 / 5 + 32) for (day, C) in weather_c.items()}
 print(weather_f)
 
+
 # Iterate over a Pandas DataFrame
+# ===============================
 student_dict = {
     "student": ["Angela", "James", "Lily"],
     "score": [56, 76, 98],
@@ -115,5 +117,27 @@ for (key, value) in student_dict.items():
     print(key, value)
 
 import pandas
+
+# Create Pandas DataFrame
+student_dataframe = pandas.DataFrame(student_dict)
+print(student_dataframe)
+# Looping through DataFrame
+for (key, value) in student_dataframe.items():
+    print(key)
+    print(value)
+
+# Pandas in-built loop - iterrows() - Loops through rows instead of columns
+# Because iterrows returns a Series for each row, it does not preserve dtypes across the rows
+#   To preserve dtypes while iterating over the rows, it is better to use itertuples()
+#   which returns namedtuples of the values and which is generally faster than iterrows.
+# You should never modify something you are iterating over.
+#   This is not guaranteed to work in all cases.
+#   Depending on the data types, the iterator returns a copy and not a view,
+#   and writing to it will have no effect.
+
+for (index, row) in student_dataframe.iterrows():
+    print("row = \n", row)  # Each row is a Pandas Series object
+    print("row.student = \n", row.student)
+    print("row.score = \n", row.score)
 
 
