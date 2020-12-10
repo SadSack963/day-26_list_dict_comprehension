@@ -63,3 +63,57 @@ print(result)
 # Dictionary Comprehension
 # ========================
 
+# new_dict = {new_key:newvalue for item in list}
+# new_dict = {new_key:newvalue for item in list if test}
+# new_dict = {new_key:newvalue for (key,value) in dict.items()}
+# new_dict = {new_key:newvalue for (key,value) in dict.items() if test}
+
+import random
+
+names = ["Alex", "Beth", "Caroline", "Dave", "Eleanor", "Freddie"]
+student_scores = {name: random.randint(0,100) for name in names}
+print(student_scores)
+
+for item in student_scores.items():
+    print(item)
+# passed_students = {item[0]: item[1] for item in student_scores.items() if item[1] >= 60}
+passed_students = {student: score for (student, score) in student_scores.items() if score >= 60}
+print(passed_students)
+
+
+# Tests
+# =====
+
+# Create a dictionary called result that takes each word in the given sentence
+# and calculates the number of letters in each word
+sentence = "What is the Airspeed Velocity of an Unladen Swallow?"
+# Break sentence into words list
+result = {word: len(word) for word in sentence.strip("?").split()}
+print(result)
+
+# Create a dictionary called weather_f that takes each temperature in degrees Celcius
+# and converts it into degrees Fahrenheit.
+weather_c = {
+    "Monday": 12,
+    "Tuesday": 14,
+    "Wednesday": 15,
+    "Thursday": 14,
+    "Friday": 21,
+    "Saturday": 22,
+    "Sunday": 24,
+}
+weather_f = {day: (C * 9 / 5 + 32) for (day, C) in weather_c.items()}
+print(weather_f)
+
+# Iterate over a Pandas DataFrame
+student_dict = {
+    "student": ["Angela", "James", "Lily"],
+    "score": [56, 76, 98],
+}
+# Looping through dictionaries:
+for (key, value) in student_dict.items():
+    print(key, value)
+
+import pandas
+
+
