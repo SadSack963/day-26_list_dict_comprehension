@@ -108,6 +108,9 @@ print(weather_f)
 
 # Iterate over a Pandas DataFrame
 # ===============================
+
+# new_dict = {new_key:new_value for (index, row) in df.iterrows()}
+
 student_dict = {
     "student": ["Angela", "James", "Lily"],
     "score": [56, 76, 98],
@@ -140,4 +143,8 @@ for (index, row) in student_dataframe.iterrows():
     print("row.student = \n", row.student)
     print("row.score = \n", row.score)
 
+# Create dictionary from DataFrame
+new_dict = {row.student: row.score for (index, row) in student_dataframe.iterrows()}
+print(new_dict)
+"""{'Angela': 56, 'James': 76, 'Lily': 98}"""
 
