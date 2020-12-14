@@ -1,7 +1,7 @@
 # List comprehension
 # ==================
 
-# new_list = [new_item for item in list]
+# new_list = [new_item for item in list_or_range]
 
 numbers = [1, 2, 3, 4, 5]
 new_numbers = [n + 1 for n in numbers]
@@ -148,3 +148,24 @@ new_dict = {row.student: row.score for (index, row) in student_dataframe.iterrow
 print(new_dict)
 """{'Angela': 56, 'James': 76, 'Lily': 98}"""
 
+# Challenge
+# =========
+
+password_list = []
+nr_letters = random.randint(8, 10)
+nr_numbers = random.randint(2, 4)
+nr_symbols = random.randint(2, 4)
+letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"]
+numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+symbols = ["!", "£", "$", "%", "^", "&", "*", "(", ")", "_"]
+
+for char in range(nr_letters):
+    password_list.append(random.choice(letters))
+
+# Convert the above for loop to a list comprehension
+# new_list = [new_item for item in list if test]
+
+pwd_letters = [random.choice(letters) for _ in range(nr_letters)]
+pwd_numbers = [random.choice(numbers) for _ in range(nr_numbers)]
+pwd_symbols = [random.choice(symbols) for _ in range(nr_symbols)]
+password_list = pwd_letters + pwd_numbers + pwd_symbols
